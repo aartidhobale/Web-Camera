@@ -72,6 +72,7 @@
             <div class="col bg-danger p-3 text-center text-white">Reject</div>
             <div class="col bg-warning p-3 text-center text-white">Total</div>  
         </div>
+<hr>
         <div class="row g-2">
           <div class="col bg-primary p-3 text-center text-white">12</div>
           <div class="col bg-success p-3 text-center text-white">11</div>
@@ -97,38 +98,26 @@
         // Load the chart
         function loadChart() {
             const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
+            new Chart(ctx, {
                 type: 'bar',
                 data: {
+                    labels: ['Accepted', 'Rejected', 'Total'],
                     datasets: [{
-                        data: [15, 30, 26],
-                        label: 'Accepted',
-
-                        // This binds the dataset to the left y axis
-                        yAxisID: 'left-y-axis'
-                    }, {
-                        data: [7, 5, 2],
-                        label: 'Rejected',
-
-                        // This binds the dataset to the right y axis
-                        yAxisID: 'right-y-axis'
-                    }],
-                    labels: ['Jan', 'Feb']
+                        label: 'Counts',
+                        data: [12, 5, 17],
+                        backgroundColor: ['green', 'red', 'blue'],
+                        borderColor: ['green', 'red', 'blue'],
+                        borderWidth: 1
+                    }]
                 },
                 options: {
                     scales: {
-                        'left-y-axis': {
-                            type: 'linear',
-                            position: 'left'
-                        },
-                        'right-y-axis': {
-                            type: 'linear',
-                            position: 'right'
+                        y: {
+                            beginAtZero: true
                         }
                     }
                 }
             });
-
         }
 
         // Initialize the camera and chart on window load
